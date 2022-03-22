@@ -2,3 +2,9 @@
   text-align: center;
 }
 
+.sky {
+  margin: 20px;
+  width: 1100px;
+  height: 700px;
+  background-color: black;
+}
