@@ -1,58 +1,44 @@
-import React from 'react'
+export function CreateStar(id) {
+  // generate coordinates
+  let starX = Math.random()*1090;
+  let starY = Math.random()*690;
+  // size
+  let starR = (Math.random()**3)*1.2;
+  // color logic
+  let c = Math.random();
+  let starColor = '';
+  if (c < 0.8) { starColor = "white" }
+  else if (c < 0.85) { starColor = "#E04200" }
+  else if (c < 0.9) { starColor = "#F59A26" }
+  else if (c < 0.95) { starColor = "#FFDC62" }
+  else { starColor = "#BEECFF" }
+  // put it all together
+  const star = {
+    id: id, x: starX, y: starY, r: starR, color: starColor
+  };
+  return star;
+}
 
-class Star extends React.Component {
-    constructor(props) {
-      super(props);
-      this.id = props.id;
-      this.state = {isSelected: false};
-      this.handleStarHover = this.handleStarHover.bind(this);
-      this.handleStarClick = this.handleStarClick.bind(this);
-      this.x = Math.random()*1090;
-      this.y = Math.random()*690;
-      this.r = Math.random()*20;
-      let c = Math.random();
-      if (c < 0.4) {
-        this.color = "white"
-      }
-      else if (c < 0.55) {
-        this.color = "red"
-      }
-      else if (c < 0.7) {
-        this.color = "orange"
-      }
-      else if (c < 0.85) {
-        this.color = "yellow"
-      }
-      else {
-        this.color = "blue"
-      }
-    }
-    handleStarHover() {
-        console.log('hovering');
-        console.log(this.id);
-    }
-    handleStarClick() {
-        this.state = {isSelected: !this.state.isSelected};
-        console.log(this.state.isSelected);
-        console.log(this);
-        console.log(this.props.color);
-    }
-
-    render() {
-        return (
-          <g
-            onMouseEnter={this.handleStarHover}
-            onClick={this.handleStarClick}
-          >
-            <circle
-              cx={this.props.x}
-              cy={this.props.y}
-              r={this.props.r}
-              fill={this.props.color}
-            />
-          </g>
-        )
-      }
-    }
-
-export default Star;
+export function DrawStar(star) {
+  console.log(star);
+  function handleStarHover() {
+    console.log(star.id);
+  }
+  function handleStarClick() {
+    console.log('clicked', star.color, 'star')
+  }
+  return (
+  <g
+    onMouseEnter={handleStarHover}
+    onClick={handleStarClick}
+    >
+    <circle
+      id={star.id}
+      cx={star.x}
+      cy={star.y}
+      r={star.r}
+      fill={star.color}
+    />
+  </g>
+  )
+}

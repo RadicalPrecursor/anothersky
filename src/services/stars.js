@@ -6,28 +6,13 @@ const create = starData => {
     return request.then(response => response.data)
 }
 
-const scan = () => {
-    let contents = {
-        "operation": "list",
-        "tableName": "anothersky-db",
-        "payload": {}
-    }
-    const request = axios.post(baseUrl, contents)
-    return request.then(response => response.data)
-}
-
-const recall = id => {
+const recall = skyName => {
     let recallRequest = {
-        "operation": "read",
-        "tableName": "anothersky-db",
-        "payload": {
-            "Key": {
-                "id": parseInt(id)
-            }
-        }
+        "operation": "recall",
+        "skyName": skyName
     }
     const request = axios.post(baseUrl, recallRequest)
     return request.then(response => response.data)
 }
 
-export default { create, scan, recall }
+export default { create, recall }
