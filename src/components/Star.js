@@ -1,14 +1,14 @@
 export function CreateStar(id) {
   // generate coordinates
-  let starX = Math.random()*1090;
-  let starY = Math.random()*690;
+  let starX = Math.random()*1340;
+  let starY = Math.random()*740;
   // size
   let starR = (Math.random()**3)*1.2;
   // color logic
   let c = Math.random();
   let starColor = '';
-  if (c < 0.8) { starColor = "white" }
-  else if (c < 0.85) { starColor = "#E04200" }
+  if (c < 0.86) { starColor = "white" }
+  else if (c < 0.88) { starColor = "#E04200" }
   else if (c < 0.9) { starColor = "#F59A26" }
   else if (c < 0.95) { starColor = "#FFDC62" }
   else { starColor = "#BEECFF" }
@@ -20,7 +20,8 @@ export function CreateStar(id) {
 }
 
 export function DrawStar(star) {
-  console.log(star);
+  // my handlers work, yay
+  // not sure they'll actually be used in the 'final' version
   function handleStarHover() {
     console.log(star.id);
   }

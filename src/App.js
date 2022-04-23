@@ -1,8 +1,11 @@
 import './App.css'
 import starService from './services/stars'
 import Save from './components/Save';
+import Footer from './components/Footer';
 import { CreateStar, DrawStar } from './components/Star'
 import { useEffect, useState, useRef } from 'react'
+import NewSky from './components/NewSky';
+import Recall from './components/Recall';
 
 function App() {
   const [stars, setStars] = useState([])
@@ -15,12 +18,10 @@ function App() {
   // Yay now this will go automatically on loading
   function generateSky() {
     let starList = []
-    for (let i=0; i<2000; i++){
+    for (let i=0; i<4000; i++){
       starList.push(CreateStar(i))
     }
     setStars(starList)
-    console.log('sky was generated with these stars')
-    console.log(stars)
   }
 
   // get starscape by name
@@ -40,7 +41,7 @@ function App() {
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1100px" height="700px"
+          width="1350px" height="750px"
           className="sky"
         >
           {stars.map( s =>
@@ -55,18 +56,10 @@ function App() {
           )}
         </svg>
       </div>
-      <div>
-        <button onClick={generateSky}>
-          new sky
-        </button>
-      </div>
+      <Recall submitHandler={retrieveSky} skyNameRef={skyNameRef} />
       <Save stars={stars}/>
-      <div>
-      <form onSubmit={retrieveSky}>
-        <div>Name: <input type='text' required id='sky-name' ref={skyNameRef} /> </div>
-        <div> <button type="submit"> recall </button></div>
-      </form>
-      </div>
+      <NewSky clickHandler={generateSky} />
+      <Footer />
     </div>
   )
 }
