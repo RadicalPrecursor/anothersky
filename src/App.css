@@ -3,8 +3,11 @@
 }
 
 .sky {
-  margin: 20px;
-  width: 1100px;
-  height: 700px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 1350px;
+  height: 750px;
   background-color: black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 10px black;
 }
