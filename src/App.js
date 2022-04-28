@@ -33,7 +33,6 @@ function App() {
       .then(response => {
         setStars(JSON.parse(response.Item.starData))
       })
-      .then(generateSky());
   }
 
   return (
